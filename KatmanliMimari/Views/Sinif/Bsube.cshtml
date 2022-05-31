@@ -1,0 +1,49 @@
+﻿@model KatmanliMimari.Models.SinifModel
+
+@{
+    ViewBag.Title = "Bsube";
+}
+
+<h2>B Şubeleri Listesi</h2>
+<hr />
+@if (Model.slist != null)
+{
+    <table class="table table-bordered table table-hover">
+        <thead>
+            <tr>
+                <th>Sınıf</th>
+                <th>Şube</th>
+                <th class="text-center">Detay</th>
+                <th class="text-center">Güncelle</th>
+                <th class="text-center">Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.slist)
+            {
+                <tr>
+                    <td>@item.Kademe</td>
+                    <td>@item.Sube</td>
+                    <td class="text-center">
+                        <a href="/Sinif/Detay/@item.SinifID">Detay</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/Sinif/Guncelle/@item.SinifID">Güncelle</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/Sinif/Sil/@item.SinifID">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Sınıf Listesi Bulunamadı.</p>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>
+

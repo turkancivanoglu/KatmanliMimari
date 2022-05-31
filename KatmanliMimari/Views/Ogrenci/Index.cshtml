@@ -1,0 +1,63 @@
+﻿@model KatmanliMimari.Models.SinifModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Öğrenci Listesi</h2>
+
+<a class="btn btn-success" href="/Ogrenci/Ekle">EKLE</a>
+
+<table class="table table-bordered table table-hower">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrenci.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrenci.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrenci.Adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrenci.Kademe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogrenci.Sube)
+        </th>
+        <th class="text-center">Detay</th>
+        <th class="text-center">Güncelle</th>
+        <th class="text-center">Sil</th>
+    </tr>
+
+    @foreach (var item in Model.olist)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kademe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sube)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Detay", "Detay", new { id = item.OgrenciID }) 
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Guncelle", "Guncelle", new { id = item.OgrenciID }) 
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Sil", "Sil", new { id = item.OgrenciID })
+            </td>
+        </tr>
+    }
+
+</table>
